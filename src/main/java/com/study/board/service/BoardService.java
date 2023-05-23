@@ -11,11 +11,19 @@ import java.util.List;
 public class BoardService {
     @Autowired
     private BoardRepository boardRepository;
+
+    // 글 작성
     public void write(Board board) {
         boardRepository.save(board);
     }
 
+    // 게시글 리스트 처리
     public List<Board> boardList() {
         return boardRepository.findAll();
+    }
+
+    // 게시글 상세보기
+    public Board boardView(Integer id) {
+        return boardRepository.findById(id).get();
     }
 }
